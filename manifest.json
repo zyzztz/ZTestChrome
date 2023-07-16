@@ -1,0 +1,41 @@
+{
+	"manifest_version": 2,
+	"name": "My Chrome Extensions",
+	"version": "1.0.0",
+	"description": "Just for test, test chrome extensions.",
+	"author": "zhaoyan",
+	"icons": {
+		"48": "icon.png",
+		"128": "icon.png"
+	},
+    "background": {
+		"scripts": [
+			"background.js"
+		],
+		"persistent": true
+    },
+	"permissions": [
+		"contextMenus",
+        "cookies",
+        "storage",
+		"tabs",
+		"webRequest",
+		"webRequestBlocking",
+        "http://*/*",
+        "https://*/*"
+    ],
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*", "ftp://*/*", "file://*", "file:///*"],
+			"js": ["content_script.js", "js/jquery-1.8.3.js", "js/utils.js"],
+			"css": ["./css/style.css"],
+			"run_at": "document_end"
+		}
+	],
+	"options_page": "options.html",
+	"options_ui": {
+		"page": "options.html",
+		"chrome_style": true
+	},
+	"update_url": "http://github.com"
+}
